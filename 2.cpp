@@ -97,21 +97,21 @@ else
         for(int k = 0; k<2; k++)
         for(int i = 0; i<4; i++)
         {
-        	for(int j = 0; j<4; j++)
+        	for(int j = 1; j<=3; j++)
         		e_matrix[k][i][j] = int(e[temp++]);
         }
 
   for(int k = 0; k<2; k++)
   for(int i = 0; i<4; i++)
         {
-        	for(int j = 0; j<4; j++)
+        	for(int j = 1; j<=3; j++)
         	    ans[k][i][j] = e_matrix[k][i][j] ^ key_matrix[i][j] ^ key_temp[i][j] ^ 4;
         }
 
 for(int k = 0; k<2; k++)
 for(int i = 0; i<4; i++)
         {
-        	for(int j = 0; j<4; j++)
+        	for(int j = 1; j<=3; j++)
         		cout<<char(ans[k][i][j]);
         }
 } 
