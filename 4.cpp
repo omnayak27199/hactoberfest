@@ -17,23 +17,23 @@ using namespace std;
         {
         if(f[i]=='&'|| f[i]=='|' ||f[i]=='!')
             out.push(f[i]);
-        else if(f[i]=='(' || f[i]=='t' || f[i]=='f')
+        else if(f[i]=='[' || f[i]=='b' || f[i]=='a')
             in.push(f[i]);
         else if(f[i]==',' )
                 continue;
-        else if(f[i]==')')
+        else if(f[i]==']')
         {
-            while(in.top()!='(')
+            while(in.top()!='[')
             {  
                     if(out.top()=='!')
                 {   
                     if(!out.empty())
                     out.pop(); 
-                    in.top()=='f'? temp1=false:temp1=true;
+                    in.top()=='a'? temp1=false:temp1=true;
                     if(!in.empty())    
                     in.pop();
                     temp1=!temp1;
-                    temp1==false ? in.push('f') : in.push('t');
+                    temp1==false ? in.push('a') : in.push('b');
                     ans=in.top();
                     if(!in.empty())    
                     in.pop();
@@ -45,16 +45,16 @@ using namespace std;
                 {
                         if(!out.empty())
                         out.pop();
-                        while(in.top()=='t'|| in.top()=='f')
+                        while(in.top()=='b'|| in.top()=='a')
                         {
-                        in.top()=='f'? temp1=false:temp1=true;
+                        in.top()=='a'? temp1=false:temp1=true;
                         if(!in.empty())
                         in.pop();
-                        in.top()=='f'? temp2=false:temp2=true;
+                        in.top()=='a'? temp2=false:temp2=true;
                         if(!in.empty())
                         in.pop();
                         temp2=temp1|temp2;
-                        temp2==false ? in.push('f') : in.push('t');
+                        temp2==false ? in.push('a') : in.push('b');
                         ans=in.top();
                         }
                         if(!in.empty())
@@ -67,16 +67,16 @@ using namespace std;
                 {       
                         if(!out.empty())
                         out.pop();
-                        while(in.top()=='t'|| in.top()=='f')
+                        while(in.top()=='b'|| in.top()=='a')
                         {
-                        in.top()=='f'? temp1=false:temp1=true;
+                        in.top()=='a'? temp1=false:temp1=true;
                         if(!in.empty())    
                         in.pop();
-                        in.top()=='f'? temp2=false:temp2=true;
+                        in.top()=='a'? temp2=false:temp2=true;
                         if(!in.empty())    
                         in.pop();
                         temp2=temp1&temp2;
-                        temp2==false ? in.push('f') : in.push('t');  
+                        temp2==false ? in.push('a') : in.push('b');  
                         ans=in.top();
                         }    
                         if(!in.empty())
@@ -91,9 +91,9 @@ using namespace std;
         }
         
         }   
-        if(ans=='f')
+        if(ans=='a')
             return false;
-        else if(ans=='t')
+        else if(ans=='b')
             return true;
         return 0;
     }
@@ -101,7 +101,7 @@ using namespace std;
 int main()
 {
     bool b1;
-    string s="|(f,t)";
+    string s="|[a,b]";
     b1=parseBoolExpr(s);
     cout << b1;
     return 0;
